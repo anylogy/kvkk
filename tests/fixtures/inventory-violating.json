@@ -1,0 +1,35 @@
+{
+  "schema_version": "kvkk-inventory-2026-v1",
+  "veri_sorumlusu": {
+    "unvan": "Hatali Ornek Ltd.",
+    "established_in_tr": true,
+    "irtibat_kisisi": {
+      "name": "Ali Kaya",
+      "email": "kvkk@hatali.example.tr"
+    }
+  },
+  "activities": [
+    {
+      "id": "BAD-001",
+      "process_name": "Yurt Disi Bulut Surekli Aktarim",
+      "data_subject_group": "Musteriler",
+      "data_categories": ["Kimlik", "Saglik"],
+      "is_special_category": true,
+      "processing_purposes": ["Analitik ve saglik skoru"],
+      "legal_basis": "ART_6_2_REPEALED",
+      "decision_2018_10_controls": {
+        "separate_policy": true,
+        "encryption_at_rest": false
+      },
+      "retention_period": "Suresiz",
+      "periodic_destruction_months": 12,
+      "destruction_log_retention_years": 1,
+      "cross_border_transfer": {
+        "enabled": true,
+        "frequency": "CONTINUOUS",
+        "mechanism": "EXPLICIT_CONSENT",
+        "destination_countries": ["US"]
+      }
+    }
+  ]
+}

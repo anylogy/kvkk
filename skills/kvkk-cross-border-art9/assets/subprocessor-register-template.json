@@ -1,0 +1,31 @@
+{
+  "schema_version": "kvkk-subprocessors-2026-v1",
+  "controller": "[PLACEHOLDER_VERI_SORUMLUSU_UNVANI]",
+  "subprocessors": [
+    {
+      "vendor_name": "Yurt Ici Barindirma A.S.",
+      "service_purpose": "Primary PostgreSQL database and encrypted object storage",
+      "hosting_country": "TR",
+      "controlling_entity_country": "TR",
+      "foreign_control_plane": false,
+      "subprocessor_access_from_abroad": false,
+      "frequency": "CONTINUOUS",
+      "transfer_mechanism": "NONE_DOMESTIC",
+      "data_categories": ["Kimlik", "Iletisim", "Islem Guvenligi"]
+    },
+    {
+      "vendor_name": "Example Global Transactional Mail GmbH",
+      "service_purpose": "Transactional password reset and notification emails",
+      "hosting_country": "DE",
+      "controlling_entity_country": "DE",
+      "foreign_control_plane": true,
+      "subprocessor_access_from_abroad": true,
+      "frequency": "CONTINUOUS",
+      "transfer_mechanism": "SCC_FILED",
+      "scc_module": "SS-2",
+      "scc_signed_date": "2026-10-05",
+      "kvkk_notification_date": "2026-10-08",
+      "data_categories": ["Iletisim"]
+    }
+  ]
+}

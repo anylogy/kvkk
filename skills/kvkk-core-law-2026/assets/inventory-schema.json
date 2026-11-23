@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/anylogy/kvkk/schemas/kisisel-veri-isleme-envanteri-2026.json",
+  "title": "Kisisel Veri Isleme Envanteri (Law No. 6698 / Law No. 7499 - 2026)",
+  "description": "Machine-readable schema for a Turkish KVKK Personal Data Processing Inventory.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "veri_sorumlusu",
+    "activities"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "kvkk-inventory-2026-v1"
+    },
+    "veri_sorumlusu": {
+      "type": "object",
+      "required": ["unvan", "established_in_tr", "irtibat_kisisi"],
+      "properties": {
+        "unvan": { "type": "string", "minLength": 2 },
+        "mersis_or_vergi_no": { "type": "string" },
+        "established_in_tr": { "type": "boolean" },
+        "verbis_status": {
+          "type": "string",
+          "enum": ["REGISTERED", "EXEMPT_2023_1154", "EXEMPT_2025_2393", "PENDING_REGISTRATION"]
+        },
+        "irtibat_kisisi": {
+          "type": "object",
+          "required": ["name", "email"],
+          "properties": {
+            "name": { "type": "string", "minLength": 2 },
+            "email": { "type": "string", "format": "email" },
+            "kep": { "type": "string" }
+          }
+        }
+      }
+    },
+    "activities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "process_name",
+          "data_subject_group",
+          "data_categories",
+          "is_special_category",
+          "processing_purposes",
+          "legal_basis",
+          "retention_period",
+          "periodic_destruction_months",
+          "destruction_log_retention_years",
+          "domestic_recipients",
+          "technical_and_administrative_measures",
+          "cross_border_transfer"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "process_name": { "type": "string", "minLength": 2 },
+          "department": { "type": "string" },
+          "data_subject_group": { "type": "string", "minLength": 2 },
+          "data_categories": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "is_special_category": { "type": "boolean" },
+          "processing_purposes": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "legal_basis": {
+            "type": "string",
+            "enum": [
+              "ART_5_1_EXPLICIT_CONSENT",
+              "ART_5_2_A_LAW",
+              "ART_5_2_B_LIFE_INTEGRITY",
+              "ART_5_2_C_CONTRACT",
+              "ART_5_2_CC_LEGAL_OBLIGATION",
+              "ART_5_2_D_MADE_PUBLIC",
+              "ART_5_2_E_RIGHT_DEFENSE",
+              "ART_5_2_F_LEGITIMATE_INTEREST",
+              "ART_6_3_A_EXPLICIT_CONSENT",
+              "ART_6_3_B_LAW",
+              "ART_6_3_C_LIFE_INTEGRITY",
+              "ART_6_3_CC_MADE_PUBLIC",
+              "ART_6_3_D_RIGHT_DEFENSE",
+              "ART_6_3_E_PUBLIC_HEALTH",
+              "ART_6_3_F_EMPLOYMENT_OHS_SS",
+              "ART_6_3_G_NONPROFIT_SCOPE"
+            ]
+          },
+          "decision_2018_10_controls": {
+            "type": "object",
+            "properties": {
+              "separate_policy": { "type": "boolean" },
+              "encryption_at_rest": { "type": "boolean" },
+              "key_management": { "type": "boolean" },
+              "access_control_2fa": { "type": "boolean" },
+              "audit_logging": { "type": "boolean" },
+              "employee_confidentiality_training": { "type": "boolean" }
+            }
+          },
+          "retention_period": { "type": "string", "minLength": 2 },
+          "statutory_retention_carveout": {
+            "type": "string",
+            "description": "e.g., Law No. 5651, VUK, TTK, Labor Law"
+          },
+          "periodic_destruction_months": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "destruction_log_retention_years": {
+            "type": "integer",
+            "minimum": 3
+          },
+          "domestic_recipients": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "technical_and_administrative_measures": {
+            "type": "array",
+            "minItems": 1,
+            "description": "KVKK Art. 12 & Data Controllers Registry Regulation Art. 5 data security measures.",
+            "items": { "type": "string", "minLength": 2 }
+          },
+          "cross_border_transfer": {
+            "type": "object",
+            "required": ["enabled"],
+            "properties": {
+              "enabled": { "type": "boolean" },
+              "frequency": {
+                "type": "string",
+                "enum": ["NONE", "OCCASIONAL", "CONTINUOUS", "SYSTEMATIC"]
+              },
+              "mechanism": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "ADEQUACY",
+                  "SCC_FILED",
+                  "BCR_APPROVED",
+                  "PUBLIC_AGREEMENT",
+                  "BOARD_UNDERTAKING",
+                  "ARIZI_EXCEPTION"
+                ]
+              },
+              "scc_module": {
+                "type": "string",
+                "enum": ["SS-1", "SS-2", "SS-3", "SS-4"]
+              },
+              "scc_signed_date": { "type": "string" },
+              "kvkk_notification_date": { "type": "string" },
+              "destination_countries": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

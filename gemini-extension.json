@@ -1,0 +1,5 @@
+{
+  "name": "kvkk",
+  "version": "2.0.0",
+  "description": "Turkish KVKK (Law No. 6698, as amended by Law No. 7499 - Nov 2026) technical compliance skills and zero-dependency Node.js / Bun verification scripts for Gemini CLI and Antigravity."
+}

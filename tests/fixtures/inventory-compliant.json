@@ -1,0 +1,70 @@
+{
+  "schema_version": "kvkk-inventory-2026-v1",
+  "veri_sorumlusu": {
+    "unvan": "Anatolia Teknoloji A.S.",
+    "mersis_or_vergi_no": "0123456789012345",
+    "established_in_tr": true,
+    "verbis_status": "EXEMPT_2023_1154",
+    "irtibat_kisisi": {
+      "name": "Ayse Demir",
+      "email": "kvkk@anatolia.example.tr"
+    }
+  },
+  "activities": [
+    {
+      "id": "ACT-001",
+      "process_name": "Uyelik ve Kimlik Dogrulama",
+      "data_subject_group": "Kullanicilar",
+      "data_categories": ["Kimlik", "Iletisim"],
+      "is_special_category": false,
+      "processing_purposes": ["Hizmet sunumu ve sozlesme ifasi"],
+      "legal_basis": "ART_5_2_C_CONTRACT",
+      "retention_period": "Uyelik suresi + 10 yil (TBK)",
+      "periodic_destruction_months": 6,
+      "destruction_log_retention_years": 3,
+      "domestic_recipients": ["Yurt Ici Barindirma A.S."],
+      "technical_and_administrative_measures": [
+        "TLS 1.3 in transit and AES-256 database disk encryption",
+        "Role-based access control (RBAC) and quarterly access reviews"
+      ],
+      "cross_border_transfer": {
+        "enabled": false,
+        "frequency": "NONE",
+        "mechanism": "NONE"
+      }
+    },
+    {
+      "id": "ACT-002",
+      "process_name": "Arizi Belge Tarama Ayristirma",
+      "data_subject_group": "Basvuru Sahipleri",
+      "data_categories": ["Ozel Nitelikli (Kimlik Belgesi Din/Kan Grubu Alani)"],
+      "is_special_category": true,
+      "processing_purposes": ["Belge dogrulama sirasinda guvenli izolasyon"],
+      "legal_basis": "ART_6_3_A_EXPLICIT_CONSENT",
+      "decision_2018_10_controls": {
+        "separate_policy": true,
+        "encryption_at_rest": true,
+        "key_management": true,
+        "access_control_2fa": true,
+        "audit_logging": true,
+        "employee_confidentiality_training": true
+      },
+      "retention_period": "Dogrulama sonrasi 30 gun",
+      "periodic_destruction_months": 6,
+      "destruction_log_retention_years": 3,
+      "domestic_recipients": [],
+      "technical_and_administrative_measures": [
+        "AES-256-GCM envelope encryption via dedicated KMS",
+        "FIDO2 2FA admin access and WORM audit logging"
+      ],
+      "cross_border_transfer": {
+        "enabled": true,
+        "frequency": "CONTINUOUS",
+        "mechanism": "SCC_FILED",
+        "scc_module": "SS-2",
+        "kvkk_notification_date": "2026-10-08",
+        "destination_countries": ["DE"]
+      }
+    }
+  ]
+}

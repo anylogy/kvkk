@@ -1,0 +1,112 @@
+name: Stale Skills Review
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-stale-skills:
+    name: Check Skills for Staleness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Identify skills needing review
+        id: stale-check
+        run: |
+          node --input-type=module << 'EOF'
+          import fs from 'node:fs';
+          import path from 'node:path';
+
+          const workspace = process.env.GITHUB_WORKSPACE || '.';
+          const skillsRoot = path.join(workspace, 'skills');
+          const today = new Date().toISOString().slice(0, 10);
+          const staleSkills = [];
+          let total = 0;
+
+          for (const entry of fs.readdirSync(skillsRoot, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+            if (!entry.isDirectory()) continue;
+            const skillDir = entry.name;
+            const skillPath = path.join(skillsRoot, skillDir);
+            const skillMd = path.join(skillPath, 'SKILL.md');
+
+            if (!fs.existsSync(skillMd)) {
+              staleSkills.push({ skill: skillDir, reason: 'Missing SKILL.md file' });
+              continue;
+            }
+
+            total += 1;
+            const hasScript =
+              fs.existsSync(path.join(skillPath, 'scripts')) &&
+              fs.readdirSync(path.join(skillPath, 'scripts')).some((f) => f.endsWith('.mjs'));
+            const hasRefs =
+              fs.existsSync(path.join(skillPath, 'references')) &&
+              fs.readdirSync(path.join(skillPath, 'references')).length > 0;
+            const hasAssets =
+              fs.existsSync(path.join(skillPath, 'assets')) &&
+              fs.readdirSync(path.join(skillPath, 'assets')).length > 0;
+
+            const missing = [];
+            if (!hasScript) missing.push('scripts/*.mjs');
+            if (!hasRefs) missing.push('references/*');
+            if (!hasAssets) missing.push('assets/*');
+
+            if (missing.length > 0) {
+              staleSkills.push({ skill: skillDir, reason: `Missing directories/files: ${missing.join(', ')}` });
+            }
+          }
+
+          const bodyLines = [
+            '## Monthly Skills Review Report',
+            '',
+            `**Date:** ${today}`,
+            `**Total skills scanned:** ${total}`,
+            `**Skills needing review:** ${staleSkills.length}`,
+            '',
+          ];
+
+          if (staleSkills.length > 0) {
+            bodyLines.push('### Skills Requiring Attention', '', '| Skill | Issue |', '|-------|-------|');
+            for (const entry of staleSkills) {
+              bodyLines.push(`| \`${entry.skill}\` | ${entry.reason} |`);
+            }
+          } else {
+            bodyLines.push(`All ${total} skills passed the structural review check. No action needed.`);
+          }
+
+          if (process.env.GITHUB_OUTPUT) {
+            fs.appendFileSync(
+              process.env.GITHUB_OUTPUT,
+              `stale_count=${staleSkills.length}\ntotal_count=${total}\n`
+            );
+          }
+
+          if (process.env.GITHUB_ENV) {
+            fs.appendFileSync(
+              process.env.GITHUB_ENV,
+              `ISSUE_BODY<<GHEOF\n${bodyLines.join('\n')}\nGHEOF\n`
+            );
+          }
+
+          console.log(`Scanned ${total} skills, found ${staleSkills.length} needing review.`);
+          EOF
+
+      - name: Create GitHub issue if stale skills found
+        if: steps.stale-check.outputs.stale_count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --title "Monthly Skills Review: ${{ steps.stale-check.outputs.stale_count }} skill(s) need attention ($(date +%B\ %Y))" \
+            --body "$ISSUE_BODY" \
+            --label "maintenance,skills-review"

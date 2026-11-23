@@ -1,0 +1,21 @@
+{
+  "algorithm": "sha256",
+  "generated_at": "2026-11-23T18:02:27.167Z",
+  "document_count": 2,
+  "unfilled_placeholder_count": 0,
+  "passed": true,
+  "documents": [
+    {
+      "path": "acik-riza-v1.md",
+      "sha256": "272428e1fcf73beb45c640c02725fd9927cccabf65d97c40ebd4c6c732fdb1ce",
+      "bytes": 98,
+      "unfilled_placeholders": []
+    },
+    {
+      "path": "aydinlatma-v1.md",
+      "sha256": "cd7586846c6bc6c4fa9176f14e5d62046ecd1a496c5248969b89829d3fb0785c",
+      "bytes": 165,
+      "unfilled_placeholders": []
+    }
+  ]
+}

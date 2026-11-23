@@ -1,0 +1,12 @@
+KVKK & Data Protection Skills for AI Agents
+Copyright 2026 Anylogy
+
+This repository is a fork and derivative work of:
+Privacy-Data-Protection-Skills (https://github.com/mukul975/Privacy-Data-Protection-Skills)
+Copyright 2025-2026 Mahipal
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Modifications in this fork (https://github.com/anylogy/kvkk):
+- Curated Türkiye KVKK (Law No. 6698) and core privacy compliance skills.
+- Flattened skills/<name>/ directory layout with gemini-extension.json for Gemini CLI and Antigravity compatibility.
+- Converted skill automation scripts (scripts/process.mjs) and CI workflows to zero-dependency Node.js / Bun ESM.

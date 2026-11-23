@@ -1,0 +1,44 @@
+name: Validate KVKK Skills & E2E Suite
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-node:
+    name: Validate & E2E Tests (Node.js)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+
+      - name: Run repository integrity & anti-contamination linter
+        run: node scripts/validate-repo.mjs
+
+      - name: Run E2E fixture test suite
+        run: node tests/run-all.mjs
+
+  validate-bun:
+    name: Validate & E2E Tests (Bun)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Run repository integrity & anti-contamination linter
+        run: bun scripts/validate-repo.mjs
+
+      - name: Run E2E fixture test suite
+        run: bun tests/run-all.mjs

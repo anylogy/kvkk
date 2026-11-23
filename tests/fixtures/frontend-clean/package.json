@@ -1,0 +1,8 @@
+{
+  "name": "sovereign-kvkk-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "svelte": "^5.0.0"
+  }
+}

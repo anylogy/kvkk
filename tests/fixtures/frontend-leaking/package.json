@@ -1,0 +1,8 @@
+{
+  "name": "leaking-frontend",
+  "version": "1.0.0",
+  "dependencies": {
+    "@sentry/browser": "^8.0.0",
+    "posthog-js": "^1.0.0"
+  }
+}

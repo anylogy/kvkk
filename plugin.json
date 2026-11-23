@@ -1,0 +1,16 @@
+{
+  "name": "kvkk",
+  "displayName": "Turkish KVKK Compliance (2026)",
+  "version": "2.0.0",
+  "description": "Turkish KVKK (Law No. 6698, as amended by Law No. 7499 - Nov 2026) technical compliance skills and zero-dependency Node.js / Bun verification scripts.",
+  "author": {
+    "name": "Anylogy",
+    "url": "https://github.com/anylogy"
+  },
+  "repository": "https://github.com/anylogy/kvkk",
+  "suggestedPrompts": [
+    "Audit my frontend repo with scan-frontend-leaks.mjs for Article 9 leaks, cookies, and PII storage",
+    "Check VERBIS exemption thresholds and validate our Kisisel Veri Isleme Envanteri JSON",
+    "Audit our subprocessor register for post-2024 Article 9 safeguards and 5-business-day SCC deadlines"
+  ]
+}

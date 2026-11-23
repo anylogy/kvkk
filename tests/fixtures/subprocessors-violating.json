@@ -1,0 +1,26 @@
+{
+  "schema_version": "kvkk-subprocessors-2026-v1",
+  "controller": "Hatali Ornek Ltd.",
+  "subprocessors": [
+    {
+      "vendor_name": "US Analytics Inc.",
+      "hosting_country": "US",
+      "controlling_entity_country": "US",
+      "foreign_control_plane": true,
+      "subprocessor_access_from_abroad": true,
+      "frequency": "CONTINUOUS",
+      "transfer_mechanism": "EXPLICIT_CONSENT"
+    },
+    {
+      "vendor_name": "Late SCC Vendor LLC",
+      "hosting_country": "IE",
+      "controlling_entity_country": "US",
+      "foreign_control_plane": true,
+      "subprocessor_access_from_abroad": false,
+      "frequency": "CONTINUOUS",
+      "transfer_mechanism": "SCC_SIGNED",
+      "scc_module": "SS-2",
+      "scc_signed_date": "2026-10-01"
+    }
+  ]
+}

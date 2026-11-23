@@ -1,0 +1,51 @@
+{
+  "year": 2026,
+  "currency": "TRY",
+  "revaluation_rate_pct": 25.49,
+  "law": "Law No. 6698 (as amended by Law No. 7499)",
+  "effective_date": "2026-01-01",
+  "fines": [
+    {
+      "article": "Art. 18/1-a",
+      "violated_obligation": "Art. 10 Obligation to Inform (Aydinlatma Yukumlulugu)",
+      "min_try": 85437,
+      "max_try": 1709200,
+      "applies_to": ["Veri Sorumlusu"]
+    },
+    {
+      "article": "Art. 18/1-b",
+      "violated_obligation": "Art. 12 Data Security Obligations & Decision 2018/10 Measures",
+      "min_try": 256357,
+      "max_try": 17092242,
+      "applies_to": ["Veri Sorumlusu"]
+    },
+    {
+      "article": "Art. 18/1-c",
+      "violated_obligation": "Art. 15 Failure to Comply with KVKK Board Decisions",
+      "min_try": 427263,
+      "max_try": 17092242,
+      "applies_to": ["Veri Sorumlusu"]
+    },
+    {
+      "article": "Art. 18/1-ç",
+      "violated_obligation": "Art. 16 VERBIS Registration and Notification Obligations",
+      "min_try": 341809,
+      "max_try": 17092242,
+      "applies_to": ["Veri Sorumlusu"]
+    },
+    {
+      "article": "Art. 18/1-d",
+      "violated_obligation": "Art. 9/5 Failure to Notify Standard Contract to KVKK Authority Within 5 Business Days",
+      "min_try": 90308,
+      "max_try": 1806177,
+      "statutory_liability_clause": "Art. 18/2 (uniquely applies to both Veri Sorumlusu and Veri Isleyen)",
+      "applies_to": ["Veri Sorumlusu", "Veri Isleyen"]
+    }
+  ],
+  "revaluation_note": {
+    "target_year": 2027,
+    "oct_2026_yi_ufe_12m_avg_pct": 27.83,
+    "status": "Indicative 2027 revaluation indicator only; confirm via Official Gazette VUK General Communique for 2027."
+  },
+  "disclaimer": "Reference figures for technical risk modeling only; not formal Turkish legal advice (hukuki mutalaa)."
+}
