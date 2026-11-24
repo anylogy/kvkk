@@ -64,6 +64,7 @@ Verify against `references/cookie-and-ux-rules.md`:
 2. Render "Accept All" (*Tumunu Kabul Et*) and "Reject All" (*Tumunu Reddet*) on Layer 1 with identical size, contrast, color weight, and click depth.
 3. Ban cookie walls, pre-ticked checkboxes, and bundled "by continuing you agree" dark patterns.
 4. Expose an easy, persistent "Cookie Preferences" (*Cerez Tercihleri*) trigger in the footer.
+5. Audit persistent `<footer>` legal links (*Aydinlatma Metni*, *Cerez Tercihleri* or Zero-Cookie Policy, and *Veri Sorumlusu* disclosure) and zero-egress footer assets against Section 4 of `references/cookie-and-ux-rules.md`.
 
 ## Step 4: Separate Aydinlatma, Acik Riza, and ETK / IYS
 

@@ -28,3 +28,21 @@ Do not merge KVKK *Acik Riza* with ETK marketing opt-in in a single checkbox.
 - Applications serving foreign residents or multilingual audiences in Turkiye must render the *Aydinlatma Metni* in Turkish as the authoritative baseline and provide accurate translations in the active user UI language.
 - Never machine-translate statutory sub-clauses into non-equivalent GDPR concepts (for example, never translate *Acik Riza* as GDPR Art. 6(1)(a) or *Irtibat Kisisi* as DPO).
 - Always record the exact language, version, and SHA-256 hash of the notice displayed to the user at the time of submission or consent.
+
+## 4. Persistent Footer Legal & Privacy Touchpoints
+
+Global `<footer>` landmarks enforce persistent statutory transparency, consent withdrawal, and Article 9 zero-egress boundaries on every route:
+
+1. **Art. 10 *Aydinlatma Metni* Persistence:**
+   - Expose a permanent, one-click, read-only *Aydinlatma Metni* link inside `<footer>` across all pages.
+   - Never bury this disclosure solely inside Terms of Service (*Kullanim Kosullari*) or bundle it behind an *Acik Riza* checkbox.
+2. **Cookie Guidelines Withdrawal Parity:**
+   - Whenever non-essential cookies exist, expose a persistent *Cerez Tercihleri* (Cookie Preferences) trigger in `<footer>` that enables consent withdrawal with the same ease as granting it.
+   - For zero-cookie static sites that set no non-essential cookies, link directly to the read-only Zero-Cookie Policy instead of rendering an unnecessary consent banner.
+3. **Art. 9 Zero-Egress Footer Assets:**
+   - Never embed unverified foreign trust-seal scripts, third-party social widgets, external icon CDNs, or externally hosted badge images inside `<footer>` (enforced by `scripts/scan-frontend-leaks.mjs`).
+   - Serve footer icons and badges as self-hosted assets or inline SVGs under your Turkish-hosted origin.
+   - Add `rel="noopener noreferrer"` on external links to prevent referrer leakage to third-party origins.
+4. **Data Controller Transparency & Statutory Boundaries:**
+   - Surface verifiable *Veri Sorumlusu* identification (legal title / trade name, MERSIS, trade registry or tax ID, KEP, or a direct link to the controller disclosure section).
+   - Keep controller identification clearly separated from non-affiliation disclaimers and Law No. 6563 (ETK) commercial communication boundaries.
